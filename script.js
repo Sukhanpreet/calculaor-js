@@ -24,30 +24,44 @@ for(let i=0;i<keys.length;i++){
 
         // number keys
         if(keyType==='number'){
-            if(display==='0' || previousKeyType==='operator' || previousKeyType==='equal'){
+            if(display==='0' || previousKeyType==='operator'){
+                currentDisplay.textContent=keyValue;  
+            }else if(previousKeyType==='equal'){
                 currentDisplay.textContent=keyValue;
-                
-            }else{
+                previousDisplay.innerHTML='';
+                calculator.dataset.firstNumber='';
+                calculator.dataset.operator='';
+                calculator.dataset.secondNumber='';
+            }
+            else{
                 currentDisplay.textContent=display+keyValue;
             }
         }
+        
         // decimal Key
         if(keyType=='decimal'){
-            if(display.includes('.')) return
-            if(previousKeyType==='operator' ||previousKeyType==='equal'){
+            if(display.includes('.')&&previousKeyType!=='operator' &&previousKeyType!=='equal')return
+
+            if(previousKeyType==='operator'){
                 currentDisplay.textContent= '0.' ;
+            }else if(previousKeyType==='equal'){
+                currentDisplay.textContent='0.';               
+                previousDisplay.innerHTML='';
+                calculator.dataset.firstNumber='';
+                calculator.dataset.operator='';
+                calculator.dataset.secondNumber='';
             }else{
             currentDisplay.textContent=display+'.';
             }
         }
+
         // opertor keys
         if(keyType==='operator'){
-
             let firstNum=calculator.dataset.firstNumber;
             let operator=calculator.dataset.operator;
             let secondNum=display;
 
-            if(firstNum && operator && secondNum && previousKeyType!='operator' && previousKeyType!=='equal'){
+            if(firstNum && operator && secondNum && previousKeyType!=='operator' && previousKeyType!=='equal'){
                 let result=calculate(firstNum,operator,secondNum);
                 currentDisplay.textContent=result;
                 console.log(`${firstNum} ${operator} ${secondNum} = ${result}`);
@@ -85,7 +99,9 @@ for(let i=0;i<keys.length;i++){
             if(operator==='divide') opSymbol='/';
             
             if(previousKeyType==='equal'){
-                firstNum=display;
+                calculator.dataset.firstNumber=display;
+
+                firstNum=calculator.dataset.firstNumber;
                 secondNum=calculator.dataset.secondNumber;
                 previousDisplay.innerHTML=firstNum + opSymbol +secondNum;
             }
@@ -97,13 +113,18 @@ for(let i=0;i<keys.length;i++){
 
             console.log(`${firstNum} ${operator} ${secondNum} = ${result}`);
         }
+        
         // all-clear 
         if(keyType==='all-clear'){
             allClear();
         }
         // clear entry 
         if(keyType==='clear-entry'){
+            if(previousKeyType==='equal'){
+                allClear();
+            }else{
             currentDisplay.innerHTML=0;
+            }
         }
         // delete
         if(keyType==='delete'){
