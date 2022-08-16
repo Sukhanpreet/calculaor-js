@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 320px;
+    max-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(3.5rem, auto) repeat(5, 2.5rem);
+
+}
+
+.output {
+    background-color: rgb(228, 228, 228);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.previous-display {
+    font-size: 1rem;
+    line-height: 1rem;
+    min-height: 1.1rem;
+}
+
+.current-display {
+    font-size: 2rem;
+    line-height: 2rem;
+    min-height: 2.1rem;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: black;
+    color: white;
+    border: gray 1px solid;
+    transition: all 0.005s;
+}
+
+button:active {
+    background-color: rgb(207, 207, 207);
+    color: black;
+}
+
+/* operator pressed */
+.op-pressed {
+    background-color: rgb(48, 48, 48);
+    /* color: blue; */
+}

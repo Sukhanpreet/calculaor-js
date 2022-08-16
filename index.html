@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="output span-4">
+        <div class="previous-display"></div>
+        <div class="current-display"></div>
+      </div>
+
+      <button data-type="all-clear">AC</button>
+      <button data-type="clear-entry">CE</button>
+      <button data-type="delete">DEL</button>
+      <button data-type="operator" data-action="add">+</button>
+
+      <button data-type="number">7</button>
+      <button data-type="number">8</button>
+      <button data-type="number">9</button>
+      <button data-type="operator" data-action="minus">-</button>
+
+      <button data-type="number">4</button>
+      <button data-type="number">5</button>
+      <button data-type="number">6</button>
+      <button data-type="operator" data-action="multiply">x</button>
+
+      <button data-type="number">1</button>
+      <button data-type="number">2</button>
+      <button data-type="number">3</button>
+      <button data-type="operator" data-action="divide">/</button>
+
+      <button data-type="decimal">.</button>
+      <button data-type="number">0</button>
+      <button data-type="equal" class="span-2">=</button>
+    </div>
+  </body>
+</html>
